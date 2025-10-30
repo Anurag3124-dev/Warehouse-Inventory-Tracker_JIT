@@ -46,12 +46,6 @@ public class Warehouse {
         }
     }
 
-    public List<Product> listProducts() {
-        rwLock.readLock().lock();
-        try { return new ArrayList<>(products.values()); }
-        finally { rwLock.readLock().unlock(); }
-    }
-
     public Product getProduct(String id) {
         rwLock.readLock().lock();
         try { return products.get(id); }
